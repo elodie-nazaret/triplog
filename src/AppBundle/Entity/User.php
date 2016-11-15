@@ -26,6 +26,7 @@ class User extends BaseUser
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Algolia\Attribute()
      */
     protected $id;
 
@@ -33,6 +34,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(type="string", name="first_name", nullable=true))
+     * @Algolia\Attribute()
      */
     private $firstName;
 
@@ -40,6 +42,7 @@ class User extends BaseUser
      * @var string
      *
      * @ORM\Column(type="string", name="last_name", nullable=true))
+     * @Algolia\Attribute()
      */
     private $lastName;
 

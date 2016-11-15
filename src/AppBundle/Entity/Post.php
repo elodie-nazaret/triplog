@@ -329,4 +329,14 @@ class Post
             'lng' => $this->getLongitude(),
         );
     }
+
+    /**
+     * @Algolia\Attribute(algoliaName="creation_date")
+     *
+     * @return \DateTime
+     */
+    public function getCreationDate()
+    {
+        return $this->getCreatedAt();
+    }
 }
