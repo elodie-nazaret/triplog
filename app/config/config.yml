@@ -78,3 +78,29 @@ fos_user:
 algolia:
     application_id: UHMIOA85YW
     api_key: 6005952f282b34b4084fa9923120644c
+
+oneup_uploader:
+    mappings:
+        gallery:
+            namer: app.picture_namer
+            frontend: dropzone
+            storage:
+                type: gaufrette
+                filesystem: gaufrette.gallery_filesystem
+
+knp_gaufrette:
+    adapters:
+        gallery:
+            local:
+                directory: "%kernel.root_dir%/../web/tmp"
+                create: true
+        real_gallery:
+            local:
+                directory: "%kernel.root_dir%/../web/uploads"
+                create: true
+
+    filesystems:
+        real_gallery:
+            adapter: real_gallery
+        gallery:
+            adapter: gallery

@@ -17,11 +17,12 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-//            new Oneup\UploaderBundle\OneupUploaderBundle(),
-//            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new Oneup\UploaderBundle\OneupUploaderBundle(),
+            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
 //            new Liip\ImagineBundle\LiipImagineBundle(),
 //            new Elao\Bundle\FormBundle\ElaoFormBundle(),
             new Algolia\AlgoliaSearchBundle\AlgoliaAlgoliaSearchBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new AppBundle\AppBundle(),
         ];
 
