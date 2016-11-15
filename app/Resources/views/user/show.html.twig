@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="{{ asset('bundles/app/material-kit/css/bootstrap.min.css') }}" />
+
+<h2>{{ user }}</h2>
+
+<br /> <br />
+{{ user.trips|length }} voyage(s) effectué(s)
+
+<table class="table table-hover">
+   <tr>
+       <th>Nom</th>
+
+       <th>Nb posts</th>
+
+       <th>Terminé ?</th>
+   </tr>
+
+    {% for trip in user.trips %}
+    	<tr>
+
+       		<td>{{ trip.name }}</td>
+
+       		<td>{{ trip.posts|length }}</td>
+
+			<td>{% if trip.status %} oui {% else %} non {% endif %}</td>
+
+   		</tr>
+    {% endfor %}
+</table>
