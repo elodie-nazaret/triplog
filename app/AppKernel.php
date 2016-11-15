@@ -21,7 +21,7 @@ class AppKernel extends Kernel
 //            new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
 //            new Liip\ImagineBundle\LiipImagineBundle(),
 //            new Elao\Bundle\FormBundle\ElaoFormBundle(),
-//            new Algolia\AlgoliaSearchBundle\AlgoliaAlgoliaSearchBundle(),
+            new Algolia\AlgoliaSearchBundle\AlgoliaAlgoliaSearchBundle(),
             new AppBundle\AppBundle(),
         ];
 
@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle();
         }
 
         return $bundles;

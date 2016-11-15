@@ -5,12 +5,14 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Doctrine\Common\Collections\ArrayCollection;
+use Algolia\AlgoliaSearchBundle\Mapping\Annotation as Algolia;
 
 /**
  * Class Post
  *
  * @ORM\Entity(repositoryClass="AppBundle\Entity\TripRepository")
  * @ORM\Table(name="post")
+ * @Algolia\Index(algoliaName="triplog", perEnvironment=false)
  */
 class Post
 {
@@ -20,22 +22,26 @@ class Post
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Algolia\Attribute(algoliaName="post_id")
      */
     private $id;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Algolia\Attribute()
      */
     private $description;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Algolia\Attribute()
      */
     private $interestPoint = false;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Trip", inversedBy="posts")
      * @ORM\JoinColumn(name="trip_id", referencedColumnName="id")
+     * @Algolia\Attribute()
      */
     private $trip;
 
@@ -43,6 +49,7 @@ class Post
      * @var float
      *
      * @ORM\Column(type="float", name="latitude"))
+     * @Algolia\Attribute()
      */
     private $latitude;
 
@@ -50,6 +57,7 @@ class Post
      * @var float
      *
      * @ORM\Column(type="float", name="longitude"))
+     * @Algolia\Attribute()
      */
     private $longitude;
 
@@ -57,6 +65,7 @@ class Post
      * @var string
      *
      * @ORM\Column(type="string", name="continent"))
+     * @Algolia\Attribute()
      */
     private $continent;
 
@@ -64,6 +73,7 @@ class Post
      * @var string
      *
      * @ORM\Column(type="string", name="country"))
+     * @Algolia\Attribute()
      */
     private $country;
 
@@ -71,6 +81,7 @@ class Post
      * @var string
      *
      * @ORM\Column(type="string", name="city"))
+     * @Algolia\Attribute()
      */
     private $city;
 
@@ -78,6 +89,7 @@ class Post
      * @var string
      *
      * @ORM\Column(type="string", name="zip_code"))
+     * @Algolia\Attribute()
      */
     private $zipCode;
 
@@ -85,11 +97,13 @@ class Post
      * @var string
      *
      * @ORM\Column(type="string", name="address"))
+     * @Algolia\Attribute()
      */
     private $address;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Picture", mappedBy="post", cascade={"persist", "remove"})
+     * @Algolia\Attribute()
      */
     private $pictures;
 
@@ -102,7 +116,7 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -110,7 +124,7 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getDescription()
     {
@@ -118,7 +132,7 @@ class Post
     }
 
     /**
-     * @param mixed $description
+     * @param string $description
      */
     public function setDescription($description)
     {
@@ -126,7 +140,7 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getInterestPoint()
     {
@@ -134,7 +148,7 @@ class Post
     }
 
     /**
-     * @param mixed $interestPoint
+     * @param bool $interestPoint
      */
     public function setInterestPoint($interestPoint)
     {
@@ -142,7 +156,7 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return Trip
      */
     public function getTrip()
     {
@@ -150,10 +164,11 @@ class Post
     }
 
     /**
-     * @param mixed $trip
+     * @param Trip $trip
      */
     public function setTrip($trip)
     {
+        $trip->addPost($this);
         $this->trip = $trip;
     }
 
@@ -222,7 +237,7 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getCity()
     {
@@ -230,7 +245,7 @@ class Post
     }
 
     /**
-     * @param mixed $city
+     * @param int $city
      */
     public function setCity($city)
     {
@@ -238,7 +253,7 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getZipCode()
     {
@@ -246,7 +261,7 @@ class Post
     }
 
     /**
-     * @param mixed $zipCode
+     * @param int $zipCode
      */
     public function setZipCode($zipCode)
     {
@@ -254,7 +269,7 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getAddress()
     {
@@ -262,7 +277,7 @@ class Post
     }
 
     /**
-     * @param mixed $address
+     * @param string $address
      */
     public function setAddress($address)
     {
@@ -270,7 +285,7 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getPictures()
     {
@@ -278,7 +293,7 @@ class Post
     }
 
     /**
-     * @param mixed $pictures
+     * @param ArrayCollection $pictures
      */
     public function setPictures($pictures)
     {
@@ -286,18 +301,32 @@ class Post
     }
 
     /**
-     * @param mixed $picture
+     * @param Picture $picture
      */
     public function addPictures($picture)
     {
+        $picture->setPost($this);
         $this->pictures->add($picture);
     }
 
     /**
-     * @param mixed $picture
+     * @param Picture $picture
      */
     public function removePicture($picture)
     {
         $this->pictures->removeElement($picture);
+    }
+
+    /**
+     * @Algolia\Attribute(algoliaName="_geoloc")
+     *
+     * @return array
+     */
+    public function getGeoloc()
+    {
+        return array(
+            'lat' => $this->getLatitude(),
+            'lng' => $this->getLongitude(),
+        );
     }
 }

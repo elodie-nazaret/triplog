@@ -5,12 +5,14 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Doctrine\Common\Collections\ArrayCollection;
+use Algolia\AlgoliaSearchBundle\Mapping\Annotation as Algolia;
 
 /**
  * Class Trip
  *
  * @ORM\Entity(repositoryClass="AppBundle\Entity\TripRepository")
  * @ORM\Table(name="trip")
+ * @Algolia\Index(autoIndex=false)
  */
 class Trip
 {
@@ -20,24 +22,36 @@ class Trip
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Algolia\Attribute()
      */
     private $id;
 
 	/**
      * @ORM\Column(type="string")
+     * @Algolia\Attribute()
      */
 	private $name;
 
-	/**
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="trips")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @Algolia\Attribute()
+     */
+    private $user;
+
+    /**
 	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="trip", cascade={"persist", "remove", "merge"})
 	 * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
 	*/
 	private $posts;
 
 	/**
-     * @ORM\Column(type="boolean", length=255, nullable=false)
+     * @ORM\Column(type="boolean", nullable=false)
+     * @Algolia\Attribute()
      */
-	private $status;
+	private $status = false;
 
     /**
      * Trip constructor.
@@ -48,7 +62,7 @@ class Trip
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -56,7 +70,7 @@ class Trip
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -64,7 +78,7 @@ class Trip
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      */
     public function setName($name)
     {
@@ -72,7 +86,7 @@ class Trip
     }
 
     /**
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getPosts()
     {
@@ -80,7 +94,7 @@ class Trip
     }
 
     /**
-     * @param mixed $posts
+     * @param Post $posts
      */
     public function setPosts($posts)
     {
@@ -88,7 +102,7 @@ class Trip
     }
 
     /**
-     * @param mixed $post
+     * @param Post $post
      */
     public function addPost($post)
     {
@@ -96,7 +110,7 @@ class Trip
     }
 
     /**
-     * @param mixed $post
+     * @param Post $post
      */
     public function removePost($post)
     {
@@ -104,7 +118,7 @@ class Trip
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getStatus()
     {
@@ -112,10 +126,27 @@ class Trip
     }
 
     /**
-     * @param mixed $status
+     * @param bool $status
      */
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser($user)
+    {
+        $user->addTrip($this);
+        $this->user = $user;
     }
 }

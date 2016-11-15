@@ -5,12 +5,14 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Doctrine\Common\Collections\ArrayCollection;
+use Algolia\AlgoliaSearchBundle\Mapping\Annotation as Algolia;
 
 /**
  * Class Picture
  *
  * @ORM\Entity(repositoryClass="AppBundle\Entity\PictureRepository")
  * @ORM\Table(name="picture")
+ * @Algolia\Index(autoIndex=false)
  */
 class Picture
 {
@@ -25,6 +27,7 @@ class Picture
 
     /**
      * @ORM\Column(type="string", name="path"))
+     * @Algolia\Attribute()
      */
     private $path;
 
@@ -37,15 +40,7 @@ class Picture
     private $post;
 
     /**
-     * Picture constructor.
-     */
-    public function __construct()
-    {
-        $this->posts = new ArrayCollection();
-    }
-
-    /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -53,7 +48,7 @@ class Picture
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPath()
     {
@@ -61,7 +56,7 @@ class Picture
     }
 
     /**
-     * @param mixed $path
+     * @param string $path
      */
     public function setPath($path)
     {
@@ -69,7 +64,7 @@ class Picture
     }
 
     /**
-     * @return mixed
+     * @return Post
      */
     public function getPost()
     {
@@ -77,7 +72,7 @@ class Picture
     }
 
     /**
-     * @param mixed $post
+     * @param Post $post
      */
     public function setPost($post)
     {

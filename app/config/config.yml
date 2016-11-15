@@ -74,3 +74,7 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User
+
+algolia:
+    application_id: UHMIOA85YW
+    api_key: 6005952f282b34b4084fa9923120644c
