@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
 use AppBundle\Entity\Trip;
 use AppBundle\Form\TripType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -52,6 +53,17 @@ class DefaultController extends Controller
         return $this->render(
             'trip/form.html.twig',
             ['form' => $form->createView()]
+        );
+    }
+    
+    /**
+     * @Route("/user/{id}", name="user")
+     */
+    public function userAction(Request $request, User $user)
+    {
+        return $this->render(
+            'user/show.html.twig',
+            ['user' => $user]
         );
     }
 }
