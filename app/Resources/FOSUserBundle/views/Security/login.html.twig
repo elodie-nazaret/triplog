@@ -1,0 +1,46 @@
+{% extends "::base.html.twig" %}
+
+{% block body_class %}signup-page{% endblock %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+        <div class="card card-signup">
+            <form class="form" method="post" action="{{ path("fos_user_security_check") }}">
+                {% if error %}
+                    <p class="error">{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                {% endif %}
+                <div class="header header-success text-center">
+                    <h4>Connexion</h4>
+                </div>
+                <div class="content">
+                    <div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">face</i>
+										</span>
+
+                        <input id="username" class="form-control" name="_username" type="text" placeholder="Nom d'utilisateur" value="{{ last_username }}" required="required" />
+                    </div>
+
+                    <div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">lock_outline</i>
+										</span>
+                        <input id="password" class="form-control" name="_password" type="password" placeholder="Mot de passe" required="required" />
+                    </div>
+
+                    <div class="checkbox">
+                        <label for="remember_me">
+                            <input id="remember_me" name="_remember_me" type="checkbox" value="on" />
+                            Se souvenir de moi
+                        </label>
+                    </div>
+                </div>
+                <div class="footer text-center">
+                    <input id="_submit" name="_submit" type="submit" class="btn btn-simple btn-primary btn-lg" value="Se connecter"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
