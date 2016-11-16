@@ -1,11 +1,12 @@
 <?php
 
-namespace AppBundle\Form\Type;
+namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+
 use AppBundle\Entity\Picture;
 
 /**

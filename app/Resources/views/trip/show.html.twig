@@ -1,2 +1,118 @@
-{{ trip.name }}
-{{ trip.status }}
+{% extends "::base.html.twig" %}
+
+{% block body_class %}index-page{% endblock %}
+
+{% block content %}
+    <div class="wrapper">
+        <div class="header header-filter" style="background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/04/Fantasy-Lake-Landscape-Wallpaper-Picture.jpg'); background-size: cover; background-position: top center;"></div>
+        <div class="main main-raised" style="height: 100vh;">
+            <div class="profile-content">
+                <div class="title">
+                    <h2>{{ trip.name }}</h2>
+                    {% if (trip.status) %}
+                        <h3>Terminé</h3>
+                    {% else %}
+                        <h3>En cours</h3>
+                    {% endif %}
+                </div>
+                <div id="map" style="width:70%; height:85vh; float: left; overflow: hidden"></div>
+                <div id="posts" style="width:30%; height:100%; overflow: hidden">
+                    {% for post in trip.posts|sortbyfield('createdAt') %}
+                        <blockquote id="{{ post.id }}" class="post_view" onmouseover="centerOnPost({{ post.latitude }}, {{ post.longitude }})" style="cursor: pointer">
+                            <p>{{ post.description|raw }}</p>
+                            <small>{{ post.address }}</small>
+                        </blockquote>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'post/modal.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCQzpA6VBvo70B0M71IYZY1payfYYOd2yc"></script>
+    <script type="text/javascript">
+        var map;
+        function initialiser() {
+            var latlng = new google.maps.LatLng({{ trip.posts.first.latitude }}, {{ trip.posts.first.longitude }});
+            var options = {
+                center: latlng,
+                zoom: 10,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            map = new google.maps.Map(document.getElementById("map"), options);
+
+            var trip = [
+                {% for post in trip.posts %}
+                new google.maps.LatLng({{ post.latitude }}, {{ post.longitude }}),
+                {% endfor %}
+            ]
+
+            var traceTrip = new google.maps.Polyline({
+                path: trip,
+                strokeColor: "#6085F8",
+                strokeOpacity: 1.0,
+                strokeWeight: 4
+            });
+
+            var bounds = new google.maps.LatLngBounds();
+
+            for (var i = 0; i < traceTrip.getPath().getLength(); i++) {
+                if (i == 0) {
+                    var marker = new google.maps.Marker({
+                        icon : {
+                            url    : "https://maps.gstatic.com/intl/en_us/mapfiles/markers2/measle_blue.png",
+                            size   : new google.maps.Size(7, 7),
+                            anchor : new google.maps.Point(4, 4)
+                        },
+                        title    : traceTrip.getPath().getAt(i).toUrlValue(6),
+                        position : traceTrip.getPath().getAt(i),
+                        map      : map
+                    });
+                } else {
+                    var marker = new google.maps.Marker({
+                        title    : traceTrip.getPath().getAt(i).toUrlValue(6),
+                        position : traceTrip.getPath().getAt(i),
+                        map      : map
+                    });
+                }
+
+
+                bounds.extend(trip[i]);
+            }
+
+            bounds.getCenter();
+            map.fitBounds(bounds);
+            traceTrip.setMap(map);
+        }
+
+        function centerOnPost(lat, lng) {
+            var latLng = new google.maps.LatLng(lat, lng);
+            map.setCenter(latLng);
+        }
+    </script>
+    <script type="text/javascript">
+        $("#posts").on('click', '.post_view', (function(event){
+            $("#postModal").removeClass("hide").modal("show");
+            var id = $(this).prop('id');
+            var jqXhr = null;
+            var timeout = setTimeout(function() {
+                if (jqXhr !== null) {
+                    jqXhr.abort();
+                }
+
+                var url = "{{ path('post_content', {'id': 9999}) }}";
+                url = url.replace("9999", id);
+
+                jqXhr = $.post(url, function (response) {
+                    jqXhr = null;
+                    $('#postContent').html(response);
+                    $('#postModal').modal('show');
+                }, 'html');
+            }, 500);
+        }));
+    </script>
+{% endblock %}
