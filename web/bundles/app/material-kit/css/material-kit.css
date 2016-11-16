@@ -1026,7 +1026,8 @@ fieldset[disabled] .form-group.is-focused .checkbox label {
 }
 /* line 88, ../sass/material-kit/_checkboxes.scss */
 .checkbox input[type=checkbox]:checked + .checkbox-material .check {
-  background: #448aff;
+  /*background: #448aff;*/
+  background: #398F3D;
 }
 /* line 92, ../sass/material-kit/_checkboxes.scss */
 .checkbox input[type=checkbox]:checked + .checkbox-material .check:before {
@@ -1646,7 +1647,8 @@ output {
 /* line 217, ../sass/material-kit/_inputs.scss */
 .form-group.is-focused .form-control {
   outline: none;
-  background-image: linear-gradient(#448aff, #448aff), linear-gradient(#D2D2D2, #D2D2D2);
+  /*background-image: linear-gradient(#448aff, #448aff), linear-gradient(#D2D2D2, #D2D2D2);*/
+  background-image: linear-gradient(#398f3d, #398f3d), linear-gradient(#D2D2D2, #D2D2D2);
   background-size: 100% 2px, 100% 1px;
   box-shadow: none;
   transition-duration: 0.3s;
