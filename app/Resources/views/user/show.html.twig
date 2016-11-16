@@ -1,54 +1,86 @@
 {% extends "::base.html.twig" %}
 
-{% block body_class %}signup-page{% endblock %}
+{% block body_class %}profile-page{% endblock %}
 
 {% block content %}
 	<div class="wrapper">
 		<div class="header header-filter" style="background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/04/Fantasy-Lake-Landscape-Wallpaper-Picture.jpg'); background-size: cover; background-position: top center;"></div>
-		<div class="main main-raised" style="height: 100vh;">
-			<div class="profile-content">
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1 col-sm-6 col-sm-offset-3" style="margin-top: 80px;">
-                        <div class="header header-info text-center">
-                                <h4>{{ user.trips|length }} voyage(s) effectué(s)</h4>
+        <div class="row">
+		    <div class="main main-raised">
+			    <div class="profile-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="card card-signup" style="box-shadow: none;">
+                                <div class="header header-info text-center" style="max-height: 100px;">
+                                    <h3><i class="material-icons" style="vertical-align: middle; font-size: 30px;">face</i> {{ user }}</h3>
+                                </div>
+                            </div>
                         </div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th class="text-center"></th>
-                                    <th>Nom</th>
-                                    <th>Nombre de posts</th>
-                                    <th>Terminé ?</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                    </div>
+                    <div>
+                        <div class="row">
+                            <div class="col-md-12 text-center" style="margin-bottom: 50px;">
                                 {% for trip in user.trips %}
-                                    <tr>
-                                        <td class="text-center"></td>
-                                        <td>{{ trip.name }}</td>
-                                        <td>{{ trip.posts|length }}</td>
-                                        <td>{% if trip.status %} oui {% else %} non {% endif %}</td>
-                                        <td class="td-actions text-right">
-                                            <a href="{{ path('trip', {"id" : trip.id}) }}" class="btn btn-simple btn-just-icon">
-                                                <i class="fa fa-search"></i>
-                                                <div class="ripple-container"></div>
-                                            </a>
-                                            <a href="{{ path('edit_trip', {"id" : trip.id}) }}" class="btn btn-simple btn-info btn-just-icon">
-                                                <i class="fa fa-edit"></i>
-                                                <div class="ripple-container"></div>
-                                            </a>
-                                            <a href="#" class="btn btn-simple btn-just-icon btn-danger">
-                                                <i class="fa fa-times"></i>
-                                                <div class="ripple-container"></div>
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    <div class="col-md-4">
+                                        <div class="card card-nav-tabs">
+                                            <div class="header header-success" style="max-height: 50px; padding-bottom: 50px;">
+                                                <h6>{{ trip.name }}</h6>
+                                            </div>
+                                            <div class="content">
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="col-md-6">
+                                                                    {% if trip.firstPicture is not same as (false) %}
+                                                                        <img src="/{{ trip.firstPicture.picture_url }}"/>
+                                                                    {% else %}
+                                                                        <img src="{{ asset('bundles/app/img/no_image.png') | imagine_filter('s') }}" class="img-rounded img-responsive"/>
+                                                                    {% endif %}
+                                                                </div>
+                                                                <div class="col-md-6 text-left" style="margin-top: 15px;">
+                                                                    <p class="text-muted" style="font-weight: 500;"><i class="material-icons" style="vertical-align: middle;">mode_comment</i> &nbsp;&nbsp;{{ trip.posts|length }}&nbsp;post{% if trip.posts|length > 1 %}s{% endif %}</p>
+                                                                    {% if trip.status is same as (true) %}
+                                                                        <p class="text-muted" style="font-weight: 500;"><i class="material-icons" style="vertical-align: middle;">check</i> Voyage terminé</p>
+                                                                    {% else %}
+                                                                        <p class="text-muted" style="font-weight: 500;"><i class="material-icons" style="vertical-align: middle;">schedule</i> Voyage en cours</p>
+                                                                    {% endif %}
+                                                                    {#<button class="btn btn-primary btn-round trip_view btn-sm" id="view_{{trip_id}}">#}
+                                                                    {#<i class="material-icons">near_me</i> Voir le voyage#}
+                                                                    {#</button>#}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" style="margin-top: 20px;">
+                                                            <div class="col-md-12">
+                                                                <a href="{{ path('trip', {"id" : trip.id}) }}">
+                                                                    <button class="btn btn-primary btn-sm btn-round">
+                                                                        <i class="material-icons">map</i> Voir
+                                                                    </button>
+                                                                </a>
+                                                                <a href="{{ path('edit_trip', {"id" : trip.id}) }}">
+                                                                    <button class="btn btn-info btn-sm btn-round">
+                                                                        <i class="material-icons">edit</i> Modifier
+                                                                    </button>
+                                                                </a>
+                                                                <a href="{{ path('create_post', {"id" : trip.id}) }}">
+                                                                    <button class="btn btn-success btn-sm btn-round">
+                                                                        <i class="material-icons">add_location</i> Nouveau post
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 {% endfor %}
-                            </tbody>
-                        </table>
-					</div>
-				</div>
-			</div>
-		</div>
+                            </div>
+                        </div>
+                    </div>
+			    </div>
+		    </div>
+        </div>
 	</div>
 {% endblock %}
