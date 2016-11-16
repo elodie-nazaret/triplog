@@ -52,16 +52,6 @@ $(function() {
             });
         },
 
-        bindHits: function() {
-        },
-
-        bindClearAll: function() {
-            $(document).on('click', '.clear-all', function(e) {
-                e.preventDefault();
-                $('#search-input').val('').focus();
-                algoliaManager.helper.setQuery('').clearRefinements().search();
-            });
-        },
         bindClearFacet: function() {
             $(document).on('click', '.clear-facet', function(e) {
                 e.preventDefault();
@@ -117,9 +107,7 @@ $(function() {
 
             this.bindSearch();
             this.bindFacets();
-            this.bindHits();
             this.bindPagination();
-            this.bindClearAll();
             this.bindClearFacet();
             this.bindTripView();
         },

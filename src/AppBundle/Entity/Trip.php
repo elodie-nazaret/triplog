@@ -160,4 +160,14 @@ class Trip
     {
         return $this->getCreatedAt();
     }
+
+    /**
+     * @Algolia\Attribute(algoliaName="nb_posts")
+     *
+     * @return int
+     */
+    public function getNbPosts()
+    {
+        return $this->getPosts()->count();
+    }
 }
