@@ -3,7 +3,6 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Post;
-use AppBundle\Form\Type\PictureType;
 use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -17,17 +16,19 @@ class PostType extends AbstractType
     {
         $builder
             ->add('description', CKEditorType::class, [
-                'label' => 'Description'
+                'label' => 'Description',
+                'required' => false,
             ])
             ->add('interestPoint', CheckboxType::class, [
-                'label' => 'Terminé'
+                'label' => 'Terminé',
+                'required' => false,
             ])
             ->add('pictures', CollectionType::class, [
                 'entry_type'   => PictureType::class,
+                'allow_add'    => true,
                 'allow_delete' => true,
                 'label'        => false,
                 'by_reference' => false,
-                //'allow_add'    => true,
             ])
         ;
     }
