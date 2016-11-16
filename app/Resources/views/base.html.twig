@@ -8,6 +8,9 @@
         <title>Triplog</title>
 
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        <!-- ici pour l'instant parce que sinon ça marche pas #theming -->
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+        <!-- fin #theming -->
 
         <!--     Fonts and icons     -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -19,7 +22,7 @@
         <link href="{{ asset('bundles/app/material-kit/css/material-kit.css') }}" rel="stylesheet"/>
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="{% block body_class %}{% endblock %}" onload="initialiser()">
         <nav class="navbar navbar-transparent navbar-absolute">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -67,14 +70,7 @@
             </div>
         </nav>
 
-        <div class="wrapper">
-            <div class="header header-filter" style="background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/04/Fantasy-Lake-Landscape-Wallpaper-Picture.jpg'); background-size: cover; background-position: top center;">
-                <div class="container">
-                    {% block content %}{% endblock %}
-                </div>
-            </div>
-
-        </div>
+        {% block content %}{% endblock %}
     </body>
 
     <!--   Core JS Files   -->
@@ -106,4 +102,5 @@
 
         });
     </script>
+    {% block javascript %}{% endblock %}
 </html>

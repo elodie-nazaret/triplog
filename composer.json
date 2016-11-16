@@ -35,7 +35,8 @@
         "liip/imagine-bundle": "^1.0@dev",
         "elao/form-bundle": "~2.1",
         "algolia/algolia-search-bundle": "~1.0",
-        "egeloen/ckeditor-bundle": "^4.0"
+        "egeloen/ckeditor-bundle": "^4.0",
+        "snilius/twig-sort-by-field": "^0.1.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

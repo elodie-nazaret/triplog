@@ -303,7 +303,7 @@ class Post
     /**
      * @param Picture $picture
      */
-    public function addPictures($picture)
+    public function addPicture($picture)
     {
         $picture->setPost($this);
         $this->pictures->add($picture);

@@ -1,0 +1,6 @@
+{{ post.description|raw }}
+{% for picture in post.pictures %}
+    <div>
+        <img src="{{ asset(picture.webPath()) }}" alt="" />
+    </div>
+{% endfor %}

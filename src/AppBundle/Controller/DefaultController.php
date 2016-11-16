@@ -33,13 +33,10 @@ class DefaultController extends Controller
      */
     public function tripAction(Request $request, Trip $trip)
     {
-        $posts = $trip->getPosts();
-
         return $this->render(
             'trip/show.html.twig',
             [
                 'trip' => $trip,
-                'posts' => $posts,
             ]
         );
     }
@@ -109,7 +106,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/post/{id}", name="post")
+     * @Route("/post/{id}", name="post_content")
      */
     public function postAction(Request $request, Post $post)
     {

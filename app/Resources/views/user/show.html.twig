@@ -3,48 +3,52 @@
 {% block body_class %}signup-page{% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1 col-sm-6 col-sm-offset-3" style="margin-top: 80px;">
-            <div class="card card-signup">
-                <div class="header header-info text-center">
-                        <h4>{{ user.trips|length }} voyage(s) effectué(s)</h4>
-                </div>
-				<table class="table">
-				    <thead>
-				        <tr>
-				            <th class="text-center"></th>
-				            <th>Nom</th>
-				            <th>Nombre de posts</th>
-				            <th>Terminé ?</th>
-				        </tr>
-				    </thead>
-				    <tbody>
-						{% for trip in user.trips %}
-					        <tr>
-					            <td class="text-center"></td>
-								<td>{{ trip.name }}</td>
-								<td>{{ trip.posts|length }}</td>
-								<td>{% if trip.status %} oui {% else %} non {% endif %}</td>
-					            <td class="td-actions text-right">
-					            
-					            <a href="{{ path('trip', {"id" : trip.id}) }}" class="btn btn-simple btn-just-icon">
-									<i class="fa fa-search"></i>
-									<div class="ripple-container"></div>
-								</a>
-					            <a href="{{ path('edit_trip', {"id" : trip.id}) }}" class="btn btn-simple btn-info btn-just-icon">
-									<i class="fa fa-edit"></i>
-									<div class="ripple-container"></div>
-								</a>
-					            <a href="#" class="btn btn-simple btn-just-icon btn-danger">
-									<i class="fa fa-times"></i>
-									<div class="ripple-container"></div>
-								</a>
-					            </td>
-					        </tr>
-				        {% endfor %}
-				    </tbody>
-				</table>
-            </div>
-        </div>
-    </div>
+	<div class="wrapper">
+		<div class="header header-filter" style="background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/04/Fantasy-Lake-Landscape-Wallpaper-Picture.jpg'); background-size: cover; background-position: top center;"></div>
+		<div class="main main-raised" style="height: 100vh;">
+			<div class="profile-content">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1 col-sm-6 col-sm-offset-3" style="margin-top: 80px;">
+                        <div class="header header-info text-center">
+                                <h4>{{ user.trips|length }} voyage(s) effectué(s)</h4>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center"></th>
+                                    <th>Nom</th>
+                                    <th>Nombre de posts</th>
+                                    <th>Terminé ?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for trip in user.trips %}
+                                    <tr>
+                                        <td class="text-center"></td>
+                                        <td>{{ trip.name }}</td>
+                                        <td>{{ trip.posts|length }}</td>
+                                        <td>{% if trip.status %} oui {% else %} non {% endif %}</td>
+                                        <td class="td-actions text-right">
+                                            <a href="{{ path('trip', {"id" : trip.id}) }}" class="btn btn-simple btn-just-icon">
+                                                <i class="fa fa-search"></i>
+                                                <div class="ripple-container"></div>
+                                            </a>
+                                            <a href="{{ path('edit_trip', {"id" : trip.id}) }}" class="btn btn-simple btn-info btn-just-icon">
+                                                <i class="fa fa-edit"></i>
+                                                <div class="ripple-container"></div>
+                                            </a>
+                                            <a href="#" class="btn btn-simple btn-just-icon btn-danger">
+                                                <i class="fa fa-times"></i>
+                                                <div class="ripple-container"></div>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
