@@ -22,9 +22,18 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
+        $facets = ['posts.country', 'posts.continent'];
+
+        $countries  = $this->getDoctrine()->getRepository(Post::class)->getAllCountries();
+        $continents = $this->getDoctrine()->getRepository(Post::class)->getAllContinents();
+
         return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.root_dir') . '/..') . DIRECTORY_SEPARATOR,
+            'algolia_app_id'         => $this->getParameter('algolia.application_id'),
+            'algolia_search_api_key' => $this->getParameter('algolia_search_api_key'),
+            'algolia_index_name'     => $this->getParameter('algolia_default_index'),
+            'facets'                 => $facets,
+            'countries'              => $countries,
+            'continents'             => $continents,
         ]);
     }
 

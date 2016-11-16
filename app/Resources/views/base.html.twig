@@ -20,6 +20,8 @@
         <!-- CSS Files -->
         <link href="{{ asset('bundles/app/material-kit/css/bootstrap.min.css') }}" rel="stylesheet" />
         <link href="{{ asset('bundles/app/material-kit/css/material-kit.css') }}" rel="stylesheet"/>
+
+        {% block stylesheets %}{% endblock %}
     </head>
 
     <body class="{% block body_class %}{% endblock %}" onload="initialiser()">
@@ -91,7 +93,6 @@
 
         $().ready(function(){
             // the body of this function is in assets/material-kit.js
-            materialKit.initSliders();
             window_width = $(window).width();
 
             if (window_width >= 992){

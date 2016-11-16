@@ -10,9 +10,9 @@ use Algolia\AlgoliaSearchBundle\Mapping\Annotation as Algolia;
 /**
  * Class Post
  *
- * @ORM\Entity(repositoryClass="AppBundle\Entity\TripRepository")
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\PostRepository")
  * @ORM\Table(name="post")
- * @Algolia\Index(algoliaName="triplog", perEnvironment=false)
+ * @Algolia\Index(autoIndex=false)
  */
 class Post
 {
@@ -22,7 +22,6 @@ class Post
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Algolia\Attribute(algoliaName="post_id")
      */
     private $id;
 
@@ -328,15 +327,5 @@ class Post
             'lat' => $this->getLatitude(),
             'lng' => $this->getLongitude(),
         );
-    }
-
-    /**
-     * @Algolia\Attribute(algoliaName="creation_date")
-     *
-     * @return \DateTime
-     */
-    public function getCreationDate()
-    {
-        return $this->getCreatedAt();
     }
 }

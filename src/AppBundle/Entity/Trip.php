@@ -12,7 +12,7 @@ use Algolia\AlgoliaSearchBundle\Mapping\Annotation as Algolia;
  *
  * @ORM\Entity(repositoryClass="AppBundle\Entity\TripRepository")
  * @ORM\Table(name="trip")
- * @Algolia\Index(autoIndex=false)
+ * @Algolia\Index(algoliaName="triplog", perEnvironment=false)
  */
 class Trip
 {
@@ -22,7 +22,7 @@ class Trip
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @Algolia\Attribute()
+     * @Algolia\Attribute(algoliaName="trip_id")
      */
     private $id;
 
@@ -44,6 +44,7 @@ class Trip
     /**
 	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="trip", cascade={"persist", "remove", "merge"})
 	 * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     * @Algolia\Attribute()
 	*/
 	private $posts;
 
@@ -148,5 +149,15 @@ class Trip
     {
         $user->addTrip($this);
         $this->user = $user;
+    }
+
+    /**
+     * @Algolia\Attribute(algoliaName="creation_date")
+     *
+     * @return \DateTime
+     */
+    public function getCreationDate()
+    {
+        return $this->getCreatedAt();
     }
 }
