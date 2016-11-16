@@ -4,6 +4,17 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    app.form.registration:
+        class: AppBundle\Form\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }
+    app.trip_voter:
+        class: AppBundle\Security\TripVoter
+        tags:
+            - { name: security.voter }
+        public: false
+    app.post_voter:
+        class: AppBundle\Security\PostVoter
+        tags:
+            - { name: security.voter }
+        public: false

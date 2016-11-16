@@ -1,5 +1,41 @@
-{{ form_start(form) }}
-    {{ form_row(form.name) }}
-    {{ form_row(form.status) }}
-    <button type="submit">Enregistrer</button>
-{{ form_end(form) }}
+{% extends "::base.html.twig" %}
+
+{% block body_class %}signup-page{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1 col-sm-6 col-sm-offset-3" style="margin-top: 80px;">
+            <div class="card card-signup">
+                {{ form_start(form, {'method': 'post', 'action': path('create_trip')}) }}
+                <div class="header header-info text-center">
+                    {% if form.vars.data.id %}
+                        <h4>Modifier un voyage</h4>
+                    {% else %}
+                        <h4>Commencer un voyage</h4>
+                    {% endif %}
+                </div>
+                <div class="content">
+                    {{ form_errors(form) }}
+                    <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="material-icons">account_circle</i>
+                            </span>
+                        {{ form_widget(form.name, { 'attr': {'class': 'form-control', 'placeholder' : 'Nom'} }) }}
+                    </div>
+                    {% if form.vars.data.id %}
+                        <div class="checkbox">
+                            <label for="{{ form.status.vars.id }}">
+                                {{ form_widget(form.status) }}
+                                Le voyage est-il terminé ?
+                            </label>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="footer text-center">
+                    <input type="submit" class="btn btn-simple btn-info btn-lg" value="Enregistrer"/>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
