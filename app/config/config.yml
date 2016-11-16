@@ -108,6 +108,41 @@ knp_gaufrette:
         gallery:
             adapter: gallery
 
+fos_js_routing:
+    routes_to_expose: [ "trip", "user" ]
+
+liip_imagine:
+    resolvers:
+       default:
+          web_path: ~
+
+    filter_sets:
+        cache: ~
+        xs:
+            quality: 75
+            filters:
+                thumbnail: { size: [160, 80], mode: outbound }
+        s:
+            quality: 75
+            filters:
+                thumbnail: { size: [200, 100], mode: outbound }
+        m:
+            quality: 75
+            filters:
+                relative_resize: { widen: 300 }
+        l:
+            quality: 100
+            filters:
+                relative_resize: { widen: 1072 }
+        xl:
+            quality: 100
+            filters:
+                relative_resize: { widen: 1072 }
+        xl2:
+            filters:
+                upscale: { min: [1072, 689] }
+                thumbnail: { size: [1072, 689], mode: outbound, allow_upscale: true  }
+
 app:
     algolia_default_index: triplog
     algolia_search_api_key: cbbd1fae50d87a79ae357872190fcba8

@@ -42,25 +42,23 @@
         </div>
         <div class="row" style="margin-top: 80px;">
             <div class="main main-raised">
-                <div class="profile-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <div id="trips">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h3 id="stats" class="text-center"></h3>
-                                        </div>
+                <div class="profile-content" style="background-color: #f5f5f5;">
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div id="trips">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h3 id="stats" class="text-center"></h3>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div id="hits"></div>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="hits"></div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div id="pagination"></div>
-                                        </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="pagination"></div>
                                     </div>
                                 </div>
                             </div>
@@ -102,10 +100,16 @@
                     <div class="tab-content">
                         <div class="tab-pane active">
                             <div class="col-md-12">
-                                <div class="col-md-4"></div>
-                                <div class="col-md-8">
-                                    <p class="text-muted"><i class="material-icons">face</i> &nbsp;&nbsp;{{{_highlightResult.user.firstName.value}}} {{{_highlightResult.user.lastName.value}}}</p>
-                                    <p class="text-muted"><i class="material-icons">mode_comment</i> &nbsp;&nbsp;{{{nb_posts}}} post(s)</p>
+                                <div class="col-md-6">
+                                    {{^first_picture}}<img src="/media/cache/resolve/s/bundles/app/img/no_image.png" class="img-rounded img-responsive"/>{{/first_picture}}
+                                    {{#first_picture}}<img src="/{{first_picture.picture_url}}"/>{{/first_picture}}
+                                </div>
+                                <div class="col-md-6 text-left">
+                                    <p class="text-muted" style="font-weight: 500;"><i class="material-icons" style="vertical-align: middle;">face</i> &nbsp;&nbsp;<a class="profile_url" data-user="{{user.id}}" href="">{{{_highlightResult.user.firstName.value}}} {{{_highlightResult.user.lastName.value}}}</a></p>
+                                    <p class="text-muted" style="font-weight: 500;"><i class="material-icons" style="vertical-align: middle;">mode_comment</i> &nbsp;&nbsp;{{{nb_posts}}}&nbsp;<span class="nbPosts" data-posts="{{nb_posts}}"></span></p>
+
+                                    {{#status}}<p class="text-muted" style="font-weight: 500;"><i class="material-icons" style="vertical-align: middle;">check</i> Voyage terminé</p>{{/status}}
+                                    {{^status}}<p class="text-muted" style="font-weight: 500;"><i class="material-icons" style="vertical-align: middle;">schedule</i> Voyage en cours</p>{{/status}}
                                     <button class="btn btn-primary btn-round trip_view btn-sm" id="view_{{trip_id}}">
                                         <i class="material-icons">near_me</i> Voir le voyage
                                     </button>

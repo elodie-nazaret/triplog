@@ -19,10 +19,11 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Oneup\UploaderBundle\OneupUploaderBundle(),
             new Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
-//            new Liip\ImagineBundle\LiipImagineBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
 //            new Elao\Bundle\FormBundle\ElaoFormBundle(),
             new Algolia\AlgoliaSearchBundle\AlgoliaAlgoliaSearchBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new AppBundle\AppBundle(),
         ];
 

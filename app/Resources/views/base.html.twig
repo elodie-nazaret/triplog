@@ -24,7 +24,7 @@
         {% block stylesheets %}{% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}" onload="initialiser()">
+    <body class="{% block body_class %}{% endblock %}">
         <nav class="navbar navbar-transparent navbar-absolute">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -88,6 +88,9 @@
 
     <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
     <script src="{{ asset('bundles/app/material-kit/js/material-kit.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
 
     <script type="text/javascript">
 

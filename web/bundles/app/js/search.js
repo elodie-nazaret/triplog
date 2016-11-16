@@ -21,7 +21,7 @@ $(function() {
             domManager.renderHits(content);
             domManager.renderFacets(content, state);
             domManager.renderPagination(content);
-            domManager.bindSearchObjects(state);
+            domManager.bindHits();
         }
     };
 
@@ -83,7 +83,8 @@ $(function() {
                 var id = $(this).prop('id');
                 id = id.substring(id.indexOf('_') + 1);
 
-                // générer url page vue trip
+                console.log(Routing.generate('trip', {id : id}));
+                window.location.href = Routing.generate('trip', {id : id});
             });
         },
 
@@ -200,7 +201,14 @@ $(function() {
             this.searchInputIcon.toggleClass('empty', query.trim() !== '');
         },
 
-        bindSearchObjects: function(state) {
+        bindHits: function() {
+            $('.profile_url').each(function() {
+                $(this).attr("href", Routing.generate('user', {id: $(this).attr('data-user')}));
+            });
+
+            $('.nbPosts').each(function() {
+                ($(this).attr('data-posts') > 1) ? $(this).html('posts') : $(this).html('post');
+            });
         }
     };
 

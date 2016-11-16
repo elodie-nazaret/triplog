@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -44,6 +45,7 @@ class Trip
     /**
 	 * @ORM\OneToMany(targetEntity="AppBundle\Entity\Post", mappedBy="trip", cascade={"persist", "remove", "merge"})
 	 * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
+     * @ORM\OrderBy({"createdAt" = "DESC"})
      * @Algolia\Attribute()
 	*/
 	private $posts;
@@ -169,5 +171,31 @@ class Trip
     public function getNbPosts()
     {
         return $this->getPosts()->count();
+    }
+
+    /**
+     * @Algolia\Attribute(algoliaName="first_picture")
+     *
+     * @return bool|array
+     */
+    public function getFirstPicture()
+    {
+        /** @var Post $firstPost */
+        $firstPost = $this->getPosts()->first();
+
+        if (false === $firstPost) {
+            return false;
+        }
+
+        $firstPicture = $firstPost->getPictures()->first();
+
+        if (false === $firstPicture) {
+            return false;
+        }
+
+        return [
+            'path'        => $firstPicture->getPath(),
+            'picture_url' => 'media/cache/resolve/s/'.$firstPicture->getWebPath(),
+        ];
     }
 }

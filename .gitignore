@@ -13,8 +13,14 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
-/web/bundles/framework
-/web/bundles/ivoryckeditor
+/web/bundles/
+!/web/bundles/app
+/web/uploads/*
+!web/uploads/.gitkeep
+/web/tmp/*
+!web/tmp/.gitkeep
+/web/media/*
+!web/media/.gitkeep
 .idea/
 composer
 composer.bat

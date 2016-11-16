@@ -78,4 +78,39 @@ class Picture
     {
         $this->post = $post;
     }
+
+    /**
+     * @return null|string
+     */
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+    /**
+     * @Algolia\Attribute(algoliaName="picture_url")
+     *
+     * @return null|string
+     */
+    public function getWebPath()
+    {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+    }
+    /**
+     * @return string
+     */
+    public function getUploadRootDir()
+    {
+        // the absolute directory path where uploaded
+        // documents should be saved
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+    /**
+     * @return string
+     */
+    public function getUploadDir()
+    {
+        // get rid of the __DIR__ so it doesn't screw up
+        // when displaying uploaded doc/image in the view
+        return 'uploads/'.$this->getPost()->getId();
+    }
 }

@@ -35,7 +35,8 @@
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCQzpA6VBvo70B0M71IYZY1payfYYOd2yc"></script>
     <script type="text/javascript">
         var map;
-        function initialiser() {
+
+        $(function () {
             var latlng = new google.maps.LatLng({{ trip.posts.first.latitude }}, {{ trip.posts.first.longitude }});
             var options = {
                 center: latlng,
@@ -87,7 +88,7 @@
             bounds.getCenter();
             map.fitBounds(bounds);
             traceTrip.setMap(map);
-        }
+        });
 
         function centerOnPost(lat, lng) {
             var latLng = new google.maps.LatLng(lat, lng);
