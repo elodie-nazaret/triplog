@@ -7,9 +7,11 @@ use AppBundle\Entity\Picture;
 use AppBundle\Entity\Post;
 use AppBundle\Entity\Trip;
 use AppBundle\Form\PostType;
+use AppBundle\Form\TripEditType;
 use AppBundle\Form\TripType;
 use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -44,6 +46,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("trips/create", name="create_trip")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function createTripAction(Request $request)
     {
@@ -82,10 +85,11 @@ class DefaultController extends Controller
 
     /**
      * @Route("trips/edit/{id}", name="edit_trip")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function editTripAction(Request $request, Trip $trip)
     {
-        $form = $this->createForm(TripType::class, $trip);
+        $form = $this->createForm(TripEditType::class, $trip);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -119,6 +123,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("{id}/posts/create", name="create_post")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function createPostAction(Request $request, Trip $trip)
     {
@@ -166,6 +171,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("posts/edit/{id}", name="edit_post")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function editPostAction(Request $request, Post $post)
     {
