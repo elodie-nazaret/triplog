@@ -107,3 +107,7 @@ knp_gaufrette:
             adapter: real_gallery
         gallery:
             adapter: gallery
+
+app:
+    algolia_default_index: triplog
+    algolia_search_api_key: cbbd1fae50d87a79ae357872190fcba8

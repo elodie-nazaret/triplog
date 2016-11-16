@@ -3,7 +3,8 @@
 {% block body_class %}signup-page{% endblock %}
 
 {% block content %}
-    <div class="row">
+    <div class="container">
+        <div class="row">
         <div class="col-md-10 col-md-offset-1 col-sm-6 col-sm-offset-3" style="margin-top: 80px;">
             <div class="card card-signup">
                 {{ form_start(form, {'method': 'post', 'action': path('create_trip')}) }}
@@ -37,5 +38,6 @@
                 {{ form_end(form) }}
             </div>
         </div>
+    </div>
     </div>
 {% endblock %}
