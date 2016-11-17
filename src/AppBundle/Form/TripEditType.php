@@ -14,7 +14,8 @@ class TripEditType extends TripType
 
         $builder
             ->add('status', CheckboxType::class, [
-                'label' => 'Terminé'
+                'label' => 'Terminé',
+                'required' => false,
             ])
         ;
     }
