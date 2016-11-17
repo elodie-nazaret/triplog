@@ -51,6 +51,7 @@
 
     <script>
         Dropzone.autoDiscover = false;
+
         $(function() {
             var dropzone = new Dropzone("div#dropzone", {
                 url: "{{ oneup_uploader_endpoint('gallery') }}",
@@ -76,6 +77,7 @@
                 }
                 {% endif %}
             });
+
             var $container = $('div#post_pictures');
             $container.data('index', $container.find(':input').length);
 
@@ -91,6 +93,7 @@
                     addPicture(fileName, $container);
                 });
             });
+
             function addPicture(fileName, $container) {
                 var index = $container.data('index');
                 $container.append('<div><div id="post_pictures_'+index+'"><input type="hidden" id="post_pictures_'+index+'_path" name="post[pictures]['+index+'][path]" value="'+fileName+'" /></div></div>');
@@ -99,6 +102,19 @@
             dropzone.on('removedfile', function(file) {
                 $('input:hidden[value="'+file.name+'"]').parent().parent().remove();
             });
+
+            {% if not form.vars.data.id %}
+                $.getJSON('https://ipinfo.io/geo', function(response) {
+                    var loc = response.loc.split(',');
+                    var coords = {
+                        latitude: loc[0],
+                        longitude: loc[1]
+                    };
+
+                    $('#post_longitude').val(coords.longitude);
+                    $('#post_latitude').val(coords.latitude);
+                });
+            {% endif %}
         });
     </script>
 {% endblock %}

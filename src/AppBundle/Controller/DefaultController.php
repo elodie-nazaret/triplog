@@ -14,6 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use GuzzleHttp\Client;
 
 class DefaultController extends Controller
 {
@@ -140,6 +141,15 @@ class DefaultController extends Controller
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $post = $form->getData();
+            $geoData = $this->getCoordinates($request, $post->getLatitude(), $post->getLongitude());
+
+            $post->setContinent($geoData['continent']);
+            $post->setCountry($geoData['country']);
+            $post->setCity($geoData['city']);
+            $post->setZipCode($geoData['zip_code']);
+            $post->setAddress($geoData['address']);
+
             $adapter    = $this->get('knp_gaufrette.filesystem_map')->get('real_gallery');
             $adapterTmp = $this->get('knp_gaufrette.filesystem_map')->get('gallery');
 
@@ -244,5 +254,82 @@ class DefaultController extends Controller
         foreach ($filesTmp['keys'] as $fileTmp) {
             $adapterTmp->delete($fileTmp);
         }
+    }
+
+    /**
+     * @param string $lat
+     * @param string $lng
+     *
+     * @return array|null
+     */
+    public function getCoordinates(Request $request,$lat, $lng)
+    {
+        $client = new Client();
+        $response = $client->request(
+            'GET',
+            'https://maps.googleapis.com/maps/api/geocode/json',
+            [
+                'query' => [
+                    'sensor' => false,
+                    'key'    => 'AIzaSyCQzpA6VBvo70B0M71IYZY1payfYYOd2yc',
+                    'latlng' => $lat.','.$lng,
+                ],
+            ]
+        );
+
+        $data = json_decode($response->getBody(), true);
+
+        if ($data['status'] == "ZERO_RESULTS" || $data['status'] == "OVER_QUERY_LIMIT") {
+            return null;
+        }
+
+        $data = $data['results'][0];
+
+        foreach ($data['address_components'] as $element) {
+            $data[implode(' ', $element['types'])] = $element['long_name'];
+        }
+
+        $address = '';
+        $address .= (array_key_exists('street_number', $data)) ? $data['street_number'].' ' : '';
+        $address .= (array_key_exists('route', $data)) ? $data['route'] : '';
+
+        $shortCountryName = $this->getShortName($data['address_components']);
+        $countryContinent = json_decode(file_get_contents(getcwd().DIRECTORY_SEPARATOR.'bundles'.DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'country.json'), true);
+
+        return [
+            'continent' => $this->getContinentName($countryContinent, $shortCountryName),
+            'country'   => (array_key_exists('country political', $data) ? $data['country political'] : ''),
+            'city'      => (array_key_exists('locality political', $data) ? $data['locality political'] : ''),
+            'zip_code'  => (array_key_exists('postal_code', $data) ? $data['postal_code'] : ''),
+            'address'   => $address,
+        ];
+    }
+
+    private function getShortName($addrComponents)
+    {
+        for ($i = 0; $i < count($addrComponents); $i++) {
+            if ($addrComponents[$i]['types'][0] == "country") {
+                return $addrComponents[$i]['short_name'];
+            }
+
+            if (count($addrComponents[$i]['types']) == 2) {
+                if ($addrComponents[$i]['types'][0] == "political") {
+                    return $addrComponents[$i]['short_name'];
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private function getContinentName($countryContinent, $shortCountryName)
+    {
+        foreach ($countryContinent['countries']['country'] as $country) {
+            if ($country['countryCode'] == $shortCountryName) {
+                return $country['continentName'];
+            }
+        }
+
+        return false;
     }
 }
