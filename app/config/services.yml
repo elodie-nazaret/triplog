@@ -22,3 +22,9 @@ services:
         class: Snilius\Twig\SortByFieldExtension
         tags:
             - { name: twig.extension }
+    app.upload_listener:
+        class: AppBundle\Event\UploadListener
+        tags:
+             - { name: kernel.event_listener, event: oneup_uploader.post_persist, method: onUpload }
+    app.picture_namer:
+        class: AppBundle\PictureNamer

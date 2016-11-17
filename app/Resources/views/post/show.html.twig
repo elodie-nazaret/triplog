@@ -1,6 +1,9 @@
 {{ post.description|raw }}
-{% for picture in post.pictures %}
-    <div>
-        <img src="{{ asset(picture.webPath()) }}" alt="" />
-    </div>
-{% endfor %}
+
+<div id="pictures">
+    {% for picture in post.pictures %}
+        <a href="/{{ picture.webPath() }}">
+            <img src="{{ picture.webPath() | imagine_filter('s') }}"/>
+        </a>
+    {% endfor %}
+</div>

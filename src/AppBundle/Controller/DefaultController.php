@@ -67,8 +67,6 @@ class DefaultController extends Controller
             $em->persist($trip);
             $em->flush();
 
-            //$this->get('algolia.indexer')->getManualIndexer($em)->reIndex('AppBundle:Post');
-
             return $this->redirectToRoute('trip', ['id' => $trip->getId()]);
         }
 
@@ -102,8 +100,6 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($trip);
             $em->flush();
-
-            //$this->get('algolia.indexer')->getManualIndexer($em)->reIndex('AppBundle:Post');
 
             return $this->redirectToRoute('trip', ['id' => $trip->getId()]);
         }
@@ -150,21 +146,21 @@ class DefaultController extends Controller
             foreach ($post->getPictures() as $picture) {
                 $content = $adapterTmp->read($picture->getPath());
 
-                if ($adapter->has($post->getId().'/'.$picture->getPath())) {
+                if ($adapter->has($trip->getId().DIRECTORY_SEPARATOR.$picture->getPath())) {
                     $fileName  = substr($picture->getPath(), 0, strrpos($picture->getPath(), '.'));
                     $extension = substr($picture->getPath(), strrpos($picture->getPath(), '.') + 1);
 
                     $picture->setPath($fileName.'_'.$picture->getId().'.'.$extension);
                     $this->getDoctrine()->getManager()->persist($picture);
                 }
-
-                $adapter->write($picture->getPath(), $content);
-                $adapter->rename($picture->getPath(), $post->getId().'/'.$picture->getPath());
+                $adapter->write($trip->getId().DIRECTORY_SEPARATOR.$picture->getPath(), $content);
             }
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
+
+            $this->get('algolia.indexer')->getManualIndexer($em)->reIndex('AppBundle:Trip');
 
             return $this->redirectToRoute('trip', ['id' => $trip->getId()]);
         }
@@ -201,7 +197,7 @@ class DefaultController extends Controller
             /** @var Picture $originalPicture */
             foreach ($originalPictures as $originalPicture) {
                 if (false === $form->getData()->getPictures()->contains($originalPicture)) {
-                    $adapter->delete($post->getId().'/'.$originalPicture->getPath());
+                    $adapter->delete($post->getTrip()->getId().'/'.$originalPicture->getPath());
                     $this->getDoctrine()->getManager()->remove($originalPicture);
                 }
             }
@@ -210,7 +206,7 @@ class DefaultController extends Controller
                 if (false === $originalPictures->contains($picture)) {
                     $content = $adapterTmp->read($picture->getPath());
 
-                    if ($adapter->has($post->getId().'/'.$picture->getPath())) {
+                    if ($adapter->has($post->getTrip()->getId().'/'.$picture->getPath())) {
                         $fileName  = substr($picture->getPath(), 0, strrpos($picture->getPath(), '.'));
                         $extension = substr($picture->getPath(), strrpos($picture->getPath(), '.') + 1);
 
@@ -218,11 +214,7 @@ class DefaultController extends Controller
                         $this->getDoctrine()->getManager()->persist($picture);
                     }
 
-                    $adapter->write($picture->getPath(), $content);
-                    $adapter->rename($picture->getPath(), $post->getId().'/'.$picture->getPath());
-
-                    //generate m filter for PDF
-                    $this->get('liip_imagine.controller')->filterAction(new Request(), $picture->getWebPath(), 'm');
+                    $adapter->write($post->getTrip()->getId().DIRECTORY_SEPARATOR.$picture->getPath(), $content);
                 }
             }
 
@@ -230,12 +222,14 @@ class DefaultController extends Controller
             $em->persist($post);
             $em->flush();
 
+            $this->get('algolia.indexer')->getManualIndexer($em)->reIndex('AppBundle:Trip');
+
             return $this->redirectToRoute('trip', ['id' => $post->getTrip()->getId()]);
         }
 
         return $this->render(
             'post/form.html.twig',
-            ['form' => $form->createView()]
+            ['form' => $form->createView(), 'post' => $post]
         );
     }
 

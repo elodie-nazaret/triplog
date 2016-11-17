@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Algolia\AlgoliaSearchBundle\AlgoliaAlgoliaSearchBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new AppBundle\AppBundle(),
         ];
 

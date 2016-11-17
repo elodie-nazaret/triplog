@@ -180,22 +180,16 @@ class Trip
      */
     public function getFirstPicture()
     {
-        /** @var Post $firstPost */
-        $firstPost = $this->getPosts()->first();
-
-        if (false === $firstPost) {
-            return false;
+        /** @var Post $post */
+        foreach ($this->posts as $post) {
+            if (!$post->getPictures()->isEmpty()) {
+                return [
+                    'path'        => $post->getPictures()->first()->getPath(),
+                    'picture_url' => 'media/cache/resolve/s/'.$post->getPictures()->first()->getWebPath(),
+                ];
+            }
         }
 
-        $firstPicture = $firstPost->getPictures()->first();
-
-        if (false === $firstPicture) {
-            return false;
-        }
-
-        return [
-            'path'        => $firstPicture->getPath(),
-            'picture_url' => 'media/cache/resolve/s/'.$firstPicture->getWebPath(),
-        ];
+        return false;
     }
 }

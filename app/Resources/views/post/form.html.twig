@@ -1,4 +1,104 @@
-{{ form_start(form) }}
+{% extends "::base.html.twig" %}
 
-    <button type="submit">Enregistrer</button>
-{{ form_end(form) }}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.css">
+{% endblock %}
+
+{% block body_class %}signup-page{% endblock %}
+
+{% block content %}
+    <div class="wrapper">
+        <div class="header header-filter" style="background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/04/Fantasy-Lake-Landscape-Wallpaper-Picture.jpg'); background-size: cover; background-position: top center;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" style="margin-top: 80px;">
+                        <div class="card card-signup">
+                            {{ form_start(form) }}
+                            <div class="header header-info text-center">
+                                {% if form.vars.data.id %}
+                                    <h4>Modifier un post</h4>
+                                {% else %}
+                                    <h4>Ajouter un post</h4>
+                                {% endif %}
+                            </div>
+                            <div class="content" style="padding-left: 30px; padding-top: 25px;">
+                                {{ form_errors(form) }}
+                                <label style="margin-top: 10px; margin-bottom: 15px;">Description</label>
+                                {{ form_widget(form.description) }}
+                                <label style="margin-top: 20px; margin-bottom: 15px;">Photos</label>
+                                <div id="dropzone" class="dropzone"></div>
+                                <div class="checkbox" style="margin-top: 30px;">
+                                    <label for="{{ form.interestPoint.vars.id }}">
+                                        {{ form_widget(form.interestPoint) }}
+                                        Est-ce un point d'intérêt ?
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="footer text-center">
+                                <input type="submit" class="btn btn-simple btn-info btn-lg" value="Enregistrer"/>
+                            </div>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/min/dropzone.min.js" type="text/javascript"></script>
+
+    <script>
+        Dropzone.autoDiscover = false;
+        $(function() {
+            var dropzone = new Dropzone("div#dropzone", {
+                url: "{{ oneup_uploader_endpoint('gallery') }}",
+                uploadMultiple: false,
+                addRemoveLinks: true,
+                acceptedFiles: 'image/*',
+                maxFilesize: 5,
+                dictRemoveFile: "Supprimer",
+                dictDefaultMessage: "Déposez vos images ici",
+                dictInvalidFileType: "Format d'image invalide",
+                dictFileTooBig: "Image trop lourde",
+                dictCancelUpload: "Annuler",
+                dictCancelUploadConfirmation: "Etes vous sur de vouloir annuler ?"
+                {% if form.vars.data.id and post is defined %}
+                ,init: function () {
+                    {% for picture in post.pictures %}
+                        var mockFile = { name: "{{ picture.path }}", size: 12345 };
+                        this.options.addedfile.call(this, mockFile);
+                        this.options.thumbnail.call(this, mockFile, "{{ asset(picture.webPath()) | imagine_filter('xs') }}");
+                        mockFile.previewElement.classList.add('dz-success');
+                        mockFile.previewElement.classList.add('dz-complete');
+                    {% endfor %}
+                }
+                {% endif %}
+            });
+            var $container = $('div#post_pictures');
+            $container.data('index', $container.find(':input').length);
+
+            {% if form.vars.data.id and post is defined %}
+                $('#dropzone').find('.dz-preview').each(function () {
+                    $(this).find('.dz-details').css('cursor', 'pointer');
+                    $(this).children().wrapAll('<a target="_blank" href="{{ asset('/uploads') }}/' + {{ form.vars.data.id }} + '/' + $(this).find('img').attr('alt') + '"></a>');
+                });
+            {% endif %}
+
+            dropzone.on('success', function(file, response){
+                response.filesName.forEach(function(fileName) {
+                    addPicture(fileName, $container);
+                });
+            });
+            function addPicture(fileName, $container) {
+                var index = $container.data('index');
+                $container.append('<div><div id="post_pictures_'+index+'"><input type="hidden" id="post_pictures_'+index+'_path" name="post[pictures]['+index+'][path]" value="'+fileName+'" /></div></div>');
+                $container.data('index', index + 1);
+            }
+            dropzone.on('removedfile', function(file) {
+                $('input:hidden[value="'+file.name+'"]').parent().parent().remove();
+            });
+        });
+    </script>
+{% endblock %}

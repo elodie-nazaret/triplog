@@ -102,6 +102,7 @@ class Post
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Picture", mappedBy="post", cascade={"persist", "remove"})
+     * @ORM\OrderBy({"createdAt" = "ASC"})
      * @Algolia\Attribute()
      */
     private $pictures;

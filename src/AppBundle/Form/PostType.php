@@ -29,6 +29,7 @@ class PostType extends AbstractType
                 'allow_delete' => true,
                 'label'        => false,
                 'by_reference' => false,
+                'entry_options' => ['label' => false],
             ])
         ;
     }
