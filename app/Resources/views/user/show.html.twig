@@ -4,7 +4,7 @@
 
 {% block content %}
 	<div class="wrapper">
-		<div class="header header-filter" style="background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/04/Fantasy-Lake-Landscape-Wallpaper-Picture.jpg'); background-size: cover; background-position: top center;"></div>
+		<div class="header header-filter" style="background-image: url('{{ asset("bundles/app/img/Fantasy-Lake-Landscape-Wallpaper-Picture.jpg") }}'); background-size: cover; background-position: top center;"></div>
         <div class="row">
 		    <div class="main main-raised">
 			    <div class="profile-content">
@@ -45,9 +45,6 @@
                                                                     {% else %}
                                                                         <p class="text-muted" style="font-weight: 500;"><i class="material-icons" style="vertical-align: middle;">schedule</i> Voyage en cours</p>
                                                                     {% endif %}
-                                                                    {#<button class="btn btn-primary btn-round trip_view btn-sm" id="view_{{trip_id}}">#}
-                                                                    {#<i class="material-icons">near_me</i> Voir le voyage#}
-                                                                    {#</button>#}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -58,16 +55,18 @@
                                                                         <i class="material-icons">map</i> Voir
                                                                     </button>
                                                                 </a>
-                                                                <a href="{{ path('edit_trip', {"id" : trip.id}) }}">
-                                                                    <button class="btn btn-info btn-sm btn-round">
-                                                                        <i class="material-icons">edit</i> Modifier
-                                                                    </button>
-                                                                </a>
-                                                                <a href="{{ path('create_post', {"id" : trip.id}) }}">
-                                                                    <button class="btn btn-success btn-sm btn-round">
-                                                                        <i class="material-icons">add_location</i> Nouveau post
-                                                                    </button>
-                                                                </a>
+                                                                {% if app.user is same as (trip.user) %}
+                                                                    <a href="{{ path('edit_trip', {"id" : trip.id}) }}">
+                                                                        <button class="btn btn-info btn-sm btn-round">
+                                                                            <i class="material-icons">edit</i> Modifier
+                                                                        </button>
+                                                                    </a>
+                                                                    <a href="{{ path('create_post', {"id" : trip.id}) }}">
+                                                                        <button class="btn btn-success btn-sm btn-round">
+                                                                            <i class="material-icons">add_location</i> Nouveau post
+                                                                        </button>
+                                                                    </a>
+                                                                {% endif %}
                                                             </div>
                                                         </div>
                                                     </div>

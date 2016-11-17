@@ -9,7 +9,7 @@
 
 {% block content %}
     <div class="wrapper">
-        <div class="header header-filter" style="background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/04/Fantasy-Lake-Landscape-Wallpaper-Picture.jpg'); background-size: cover; background-position: top center;"></div>
+        <div class="header header-filter" style="background-image: url('{{ asset("bundles/app/img/Fantasy-Lake-Landscape-Wallpaper-Picture.jpg") }}'); background-size: cover; background-position: top center;"></div>
         <div class="row">
             <div class="main main-raised">
                 <div class="profile-content">
@@ -72,9 +72,9 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script src="http://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.common.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.19.1/algoliasearch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch-helper-js/2.14.0/algoliasearch.helper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hogan.js/3.0.2/hogan.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.min.js"></script>
     <script>
         var APPLICATION_ID = "{{ algolia_app_id }}";
