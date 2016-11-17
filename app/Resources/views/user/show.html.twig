@@ -61,11 +61,13 @@
                                                                             <i class="material-icons">edit</i> Modifier
                                                                         </button>
                                                                     </a>
-                                                                    <a href="{{ path('create_post', {"id" : trip.id}) }}">
-                                                                        <button class="btn btn-success btn-sm btn-round">
-                                                                            <i class="material-icons">add_location</i> Nouveau post
-                                                                        </button>
-                                                                    </a>
+                                                                    {% if trip.status is same as (false) %}
+                                                                        <a href="{{ path('create_post', {"id" : trip.id}) }}">
+                                                                            <button class="btn btn-success btn-sm btn-round">
+                                                                                <i class="material-icons">add_location</i> Nouveau post
+                                                                            </button>
+                                                                        </a>
+                                                                    {% endif %}
                                                                 {% endif %}
                                                             </div>
                                                         </div>

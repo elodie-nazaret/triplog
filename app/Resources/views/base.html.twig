@@ -42,7 +42,7 @@
                         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                             <li>
                                 <a href="{{ path('user', {"id" : app.user.id}) }}">
-                                    <i class="material-icons">account_circle</i> {{ app.user.username }}
+                                    <i class="material-icons">account_circle</i> {{ app.user }}
                                 </a>
                             </li>
                             <li>
