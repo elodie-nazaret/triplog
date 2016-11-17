@@ -10,12 +10,19 @@
                 {{ post.description|raw }}
             </div>
             <div class="col-md-6">
-                <div id="pictures">
-                    {% for picture in post.pictures %}
-                        <a href="/{{ picture.webPath() }}">
-                            <img class="" src="{{ picture.webPath() | imagine_filter('xs') }}" style="margin-top: 5px;"/>
-                        </a>
-                    {% endfor %}
+                <div class="demo-gallery">
+                    <ul id="pictures"  class="list-unstyled list-inline">
+                        {% for picture in post.pictures %}
+                            <li data-src="/{{ picture.webPath() }}">
+                                <a href="">
+                                    <img class="" src="{{ picture.webPath() | imagine_filter('xs') }}"/>
+                                    <div class="demo-gallery-poster">
+                                        <img src="https://sachinchoolur.github.io/lightGallery/static/img/zoom.png">
+                                    </div>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
         </div>
