@@ -185,11 +185,26 @@ class Trip
             if (!$post->getPictures()->isEmpty()) {
                 return [
                     'path'        => $post->getPictures()->first()->getPath(),
-                    'picture_url' => 'media/cache/resolve/s/'.$post->getPictures()->first()->getWebPath(),
+                    'picture_url' => 'media/cache/resolve/xs/'.$post->getPictures()->first()->getWebPath(),
                 ];
             }
         }
 
         return false;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPostsForMap()
+    {
+        $posts = [];
+
+        /** @var Post $post */
+        foreach ($this->getPosts() as $key => $post) {
+            $posts['interestPoint'][$key] = $post->getInterestPoint();
+            $posts['id'][$key] = $post->getId();
+        }
+        return $posts;
     }
 }

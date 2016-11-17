@@ -3,7 +3,7 @@
 <div id="pictures">
     {% for picture in post.pictures %}
         <a href="/{{ picture.webPath() }}">
-            <img src="{{ picture.webPath() | imagine_filter('s') }}"/>
+            <img src="{{ picture.webPath() | imagine_filter('xs') }}"/>
         </a>
     {% endfor %}
 </div>
