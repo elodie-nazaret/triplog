@@ -13,8 +13,9 @@
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
 /vendor/
-/web/bundles/
-!/web/bundles/app
+/web/bundles/fosjsrouting
+/web/bundles/framework
+/web/bundles/ivoryckeditor
 /web/uploads/*
 !web/uploads/.gitkeep
 /web/tmp/*

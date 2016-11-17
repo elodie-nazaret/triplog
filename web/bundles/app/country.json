@@ -1,0 +1,1006 @@
+{
+  "countries": {
+    "country": [
+      {
+        "countryCode": "AD",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "AE",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "AF",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "AG",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "AI",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "AL",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "AM",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "AO",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "AQ",
+        "continentName": "Antarctica"
+      },
+      {
+        "countryCode": "AR",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "AS",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "AT",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "AU",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "AW",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "AX",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "AZ",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "BA",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "BB",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "BD",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "BE",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "BF",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "BG",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "BH",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "BI",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "BJ",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "BL",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "BM",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "BN",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "BO",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "BQ",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "BR",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "BS",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "BT",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "BV",
+        "continentName": "Antarctica"
+      },
+      {
+        "countryCode": "BW",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "BY",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "BZ",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "CA",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "CC",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "CD",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "CF",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "CG",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "CH",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "CI",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "CK",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "CL",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "CM",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "CN",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "CO",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "CR",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "CU",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "CV",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "CW",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "CX",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "CY",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "CZ",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "DE",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "DJ",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "DK",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "DM",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "DO",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "DZ",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "EC",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "EE",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "EG",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "EH",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "ER",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "ES",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "ET",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "FI",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "FJ",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "FK",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "FM",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "FO",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "FR",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "GA",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "GB",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "GD",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "GE",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "GF",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "GG",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "GH",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "GI",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "GL",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "GM",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "GN",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "GP",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "GQ",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "GR",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "GS",
+        "continentName": "Antarctica"
+      },
+      {
+        "countryCode": "GT",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "GU",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "GW",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "GY",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "HK",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "HM",
+        "continentName": "Antarctica"
+      },
+      {
+        "countryCode": "HN",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "HR",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "HT",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "HU",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "ID",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "IE",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "IL",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "IM",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "IN",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "IO",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "IQ",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "IR",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "IS",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "IT",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "JE",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "JM",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "JO",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "JP",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "KE",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "KG",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "KH",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "KI",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "KM",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "KN",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "KP",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "KR",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "KW",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "KY",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "KZ",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "LA",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "LB",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "LC",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "LI",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "LK",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "LR",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "LS",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "LT",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "LU",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "LV",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "LY",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "MA",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "MC",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "MD",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "ME",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "MF",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "MG",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "MH",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "MK",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "ML",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "MM",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "MN",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "MO",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "MP",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "MQ",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "MR",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "MS",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "MT",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "MU",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "MV",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "MW",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "MX",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "MY",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "MZ",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "NA",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "NC",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "NE",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "NF",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "NG",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "NI",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "NL",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "NO",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "NP",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "NR",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "NU",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "NZ",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "OM",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "PA",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "PE",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "PF",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "PG",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "PH",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "PK",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "PL",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "PM",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "PN",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "PR",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "PS",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "PT",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "PW",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "PY",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "QA",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "RE",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "RO",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "RS",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "RU",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "RW",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "SA",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "SB",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "SC",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "SD",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "SE",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "SG",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "SH",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "SI",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "SJ",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "SK",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "SL",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "SM",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "SN",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "SO",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "SR",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "SS",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "ST",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "SV",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "SX",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "SY",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "SZ",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "TC",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "TD",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "TF",
+        "continentName": "Antarctica"
+      },
+      {
+        "countryCode": "TG",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "TH",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "TJ",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "TK",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "TL",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "TM",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "TN",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "TO",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "TR",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "TT",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "TV",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "TW",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "TZ",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "UA",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "UG",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "UM",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "US",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "UY",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "UZ",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "VA",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "VC",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "VE",
+        "continentName": "South America"
+      },
+      {
+        "countryCode": "VG",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "VI",
+        "continentName": "North America"
+      },
+      {
+        "countryCode": "VN",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "VU",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "WF",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "WS",
+        "continentName": "Oceania"
+      },
+      {
+        "countryCode": "XK",
+        "continentName": "Europe"
+      },
+      {
+        "countryCode": "YE",
+        "continentName": "Asia"
+      },
+      {
+        "countryCode": "YT",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "ZA",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "ZM",
+        "continentName": "Africa"
+      },
+      {
+        "countryCode": "ZW",
+        "continentName": "Africa"
+      }
+    ]
+  }
+}
