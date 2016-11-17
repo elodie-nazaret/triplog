@@ -77,6 +77,9 @@ class LoadDataDev implements FixtureInterface, ContainerAwareInterface
         $post1->setZipCode('75007');
         $post1->setLatitude(48.858391);
         $post1->setLongitude(2.294426);
+        $date = new \DateTime();
+        $date->sub(new \DateInterval('P5D'));
+        $post1->setCreatedAt($date);
 
         $manager->persist($post1);
 
@@ -90,6 +93,9 @@ class LoadDataDev implements FixtureInterface, ContainerAwareInterface
         $post2->setZipCode('94390');
         $post2->setLatitude(48.726303);
         $post2->setLongitude(2.36515);
+        $date2 = new \DateTime();
+        $date2->sub(new \DateInterval('P4D'));
+        $post2->setCreatedAt($date2);
 
         $manager->persist($post2);
 
@@ -103,6 +109,9 @@ class LoadDataDev implements FixtureInterface, ContainerAwareInterface
         $post3->setZipCode('69125');
         $post3->setLatitude(45.731479);
         $post3->setLongitude(5.071339);
+        $date3 = new \DateTime();
+        $date3->sub(new \DateInterval('P3D'));
+        $post3->setCreatedAt($date3);
 
         $manager->persist($post3);
 
@@ -116,6 +125,9 @@ class LoadDataDev implements FixtureInterface, ContainerAwareInterface
         $post4->setZipCode('69005');
         $post4->setLatitude(45.762344);
         $post4->setLongitude(4.826818);
+        $date4 = new \DateTime();
+        $date4->sub(new \DateInterval('P2D'));
+        $post4->setCreatedAt($date4);
 
         $manager->persist($post4);
 
@@ -129,6 +141,9 @@ class LoadDataDev implements FixtureInterface, ContainerAwareInterface
         $post5->setZipCode('13002');
         $post5->setLatitude(43.296371);
         $post5->setLongitude(5.369428);
+        $date5 = new \DateTime();
+        $date5->sub(new \DateInterval('P1D'));
+        $post5->setCreatedAt($date5);
 
         $manager->persist($post5);
 
@@ -177,23 +192,37 @@ class LoadDataDev implements FixtureInterface, ContainerAwareInterface
 
 
         $trip4 = new Trip();
-        $trip4->setName('Voyage Espagne Maroc');
+        $trip4->setName('Voyage Espagne Afrique');
         $trip4->setUser($user);
 
         $manager->persist($trip4);
 
         $post8 = new Post();
         $post8->setTrip($trip4);
-        $post8->setAddress('17 Asquith Rd');
-        $post8->setCity('Boksburg');
+        $post8->setAddress('Parque Deportivo Puerta de Hierro');
+        $post8->setCity('Madrid');
         $post8->setContinent('Europe');
-        $post8->setCountry('Afrique du Sud');
-        $post8->setDescription('Afrique du sud !');
-        $post8->setZipCode('1459');
-        $post8->setLatitude(-26.193712);
-        $post8->setLongitude(28.245002);
+        $post8->setCountry('Espagne');
+        $post8->setDescription('Tapas !');
+        $post8->setZipCode('28023');
+        $post8->setLatitude(40.461324);
+        $post8->setLongitude(-3.749943);
+        $date6 = new \DateTime();
+        $date6->sub(new \DateInterval('P1D'));
+        $post8->setCreatedAt($date6);
 
-        $manager->persist($post8);
+        $post9 = new Post();
+        $post9->setTrip($trip4);
+        $post9->setAddress('17 Asquith Rd');
+        $post9->setCity('Boksburg');
+        $post9->setContinent('Europe');
+        $post9->setCountry('Afrique du Sud');
+        $post9->setDescription('Afrique du sud !');
+        $post9->setZipCode('1459');
+        $post9->setLatitude(-26.193712);
+        $post9->setLongitude(28.245002);
+
+        $manager->persist($post9);
 
         $manager->flush();
     }
